@@ -1,0 +1,31 @@
+{
+  "name": "p14-hrnet-backend",
+  "version": "1.0.0",
+  "description": "HrNet Api Employee",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server",
+    "dev": "nodemon server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KhaeraB/P14-HrNet-BackEnd.git"
+  },
+  "keywords": [],
+  "author": "Khaera Belkadi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KhaeraB/P14-HrNet-BackEnd/issues"
+  },
+  "homepage": "https://github.com/KhaeraB/P14-HrNet-BackEnd#readme",
+  "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "date-fns": "^2.29.3",
+    "express": "^4.18.2",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
