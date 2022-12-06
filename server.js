@@ -1,17 +1,34 @@
+require('dotenv').config()
 const express = require('express')
+
 const app = express()
 const path = require('path')
-const {logger} = require('./middleware/logger')
+const {logger, logEvents} = require('./middleware/logger')
 const errorHandler = require('./middleware/errorHandler')
 const cors = require('cors')
-const corsOptions = require('./config/corsOptions')
 const cookieParser = require('cookie-parser')
+// const corsOptions = require('./config/corsOptions')
+
+const connectDB = require('./config/dbConnect')
+
 const PORT = process.env.PORT || 3001
 
+ console.log(process.env.NODE_ENV)
+
+//  "origin": "*",
+//   "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+//   "preflightContinue": false,
+//   "optionsSuccessStatus": 204
+ app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
+    next();
+  });
 
 app.use(logger)
 
-app.use(cors(corsOptions))
+
 
 app.use(express.json())
 
@@ -35,4 +52,7 @@ app.all('*', (req, res)=>{
 app.use(errorHandler)
 
 app.listen(PORT, ()=> console.log(`Server running on port ${PORT}`))
+
+
+
 
