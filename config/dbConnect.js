@@ -4,8 +4,5 @@ mongoose.set('strictQuery', true)
 mongoose.connect(
     process.env.DATABASE_URI,
     { useNewUrlParser: true, useUnifiedTopology: true}, 
-    (err)=> {
-        if(!err) console.log("Connected to MongoDB");
-        else console.log("Fail to connect to MongoDB :" + err);
-    }
+
 )

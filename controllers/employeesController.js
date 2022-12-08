@@ -12,7 +12,7 @@ const { response } = require("express");
  */
 const getAllEmployees = asyncHandler(async (req, res) => {
   const employees = await Employees.find().lean();
-  if (!employees) res.status(400).json({ message: "No employees found" });
+  if (!employees?.length) res.status(400).json({ message: "No employees found" });
   else res.json(employees);
 });
 
@@ -24,32 +24,9 @@ const getAllEmployees = asyncHandler(async (req, res) => {
  * @returns {any}
  */
 const createNewEmployee = asyncHandler(async (req, res) => {
-  const {
-    firstName,
-    lastName,
-    birthDate,
-    startDate,
-    street,
-    city,
-    state,
-    zipCode,
-    department,
-  } = req.body;
-
-  const duplicate = await Employees.findOne({firstName}).lean().exec();
-  if (duplicate) res.status(409).json({ message: "Duplicate employee" });
-
-  const newEmployee = {
-    firstName,
-    lastName,
-    birthDate,
-    startDate,
-    street,
-    city,
-    state,
-    zipCode,
-    department,
-  };
+  const newEmployee = await new Employees({
+    ...req.body   
+})
 
   const employee = await Employees.create(newEmployee);
 
@@ -100,7 +77,7 @@ const updateEmployee = asyncHandler(async (req, res) => {
   // check for duplicate
   const duplicate = await Employees.findOne({firstName}).lean().exec();
   // Allow updates to the original employee
-  if (duplicate && duplicate?._id.toString() !== id) {
+  if (duplicate?._id.toString() !== id) {
     return res.status(409).json({ message: "Duplicate employee" });
   }
   employee.firstName = firstName;
