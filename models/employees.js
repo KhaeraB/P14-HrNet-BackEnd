@@ -1,10 +1,6 @@
 const mongoose = require("mongoose");
 
 const employeeSchema = new mongoose.Schema({
-  id: {
-    type: String,
-    required: true,
-  },
   firstName: {
     type: String,
     required: true,
@@ -15,7 +11,7 @@ const employeeSchema = new mongoose.Schema({
     required: true,
     minLength: 3,
   },
-  birthdate: {
+  birthDate: {
     type: String,
     required: true,
   },
@@ -36,7 +32,7 @@ const employeeSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  zipcode: {
+  zipCode: {
     type: String,
     required: true,
     minLength: 3,
