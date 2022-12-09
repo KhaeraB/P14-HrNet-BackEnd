@@ -32,7 +32,7 @@ app.use("/", express.static(path.join(__dirname, "public")));
 
 //endPoints
 app.use("/", require("./routes/root"));
-app.use("/employees", require("./routes/employeesRoutes"));
+app.use("/api/employees", require("./routes/employeesRoutes"));
 
 app.all("*", (req, res) => {
   res.status(404);
@@ -59,3 +59,4 @@ mongoose.connection.on("error", (err) => {
     "mongoErrLog.log"
   );
 });
+
