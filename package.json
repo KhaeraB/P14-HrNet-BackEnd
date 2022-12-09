@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "HrNet Api Employee",
   "main": "server.js",
+  "type": "module",
   "scripts": {
     "start": "node server",
     "dev": "nodemon server"
@@ -28,8 +29,7 @@
     "mongodb": "^4.12.1",
     "mongoose": "^6.8.0",
     "mongoose-sequence": "^5.3.1",
-    "uuid": "^9.0.0",
-    "vercel": "^28.8.0"
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"
