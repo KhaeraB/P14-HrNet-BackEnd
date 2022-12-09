@@ -26,10 +26,14 @@ app.use(express.json())
 
 app.use(cookieParser())
 
-app.use('/', express.static(path.join(__dirname, 'public')))
+// app.use('/', express.static(path.join(__dirname, 'public')))
+//home
+app.get('/', (_req, res) => {
+    res.send("Hello World !!");
+})
 
 //endPoints
-app.use('/', require('./routes/root'))
+// app.use('/', require('./routes/root'))
 app.use('/employees', require('./routes/employeesRoutes'))
 
 app.all('*', (req, res)=>{
