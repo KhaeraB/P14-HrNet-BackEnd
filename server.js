@@ -33,6 +33,8 @@ app.use("/", express.static(path.join(__dirname, "public")));
 //endPoints
 app.use("/", require("./routes/root"));
 app.use("/api/employees", require("./routes/employeesRoutes"));
+app.use("/api/states", require("./routes/statesRoutes"));
+app.use("/api/departments", require("./routes/departmentsRoutes"));
 
 app.all("*", (req, res) => {
   res.status(404);
